@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:image" content="..." />
+  <meta property="og:title" content="..." />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@damienmarchal">
+  <meta name="twitter:creator" content="@damienmarchal">
+  <meta name="twitter:title" content="...">
+  <meta name="twitter:description" content="Toutes les stats des différentes éditions du Challenge Métropolitain du vélo #CMV.">
+  <meta name="twitter:image" content="...">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"  integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha384-/LjQZzcpTzaYn7qWqRIWYC5l8FWEZ2bIHIz0D73Uzba4pShEcdLdZyZkI4Kv676E" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+  <div id="maincontainer" class="container-fluid rounded text-white">
+    <div class="row bg-dark" >
+      <div class="col-1  mt-2" >
+        <img id="blason" height="32"/>
+      </div>
+      <div class="col-10 text-center mt-2">
+        <h4 class="title"> ... </h4>
+      </div>
+    </div>
+    <hr/>
+
+    <div class="row text-center">
+      <div class="col-sm">
+        <div class="spinner-border ml-auto" role="status" aria-hidden="true" id="spinner"></div>
+      </div>
+    </div>
+
+    <div id="line1" class="row text-center d-none mb-n1">
+      <div class="col-sm">
+        <h4>
+          <span id="totalKm-lille">...</span> Km
+        </h4>
+        <h6>
+          (sur <span id="totalKm">...</span>)
+        </h6>
+      </div>
+      <div class="col-sm">
+        <h4>
+          <span id="numberOfMembers-lille">...</span> participants
+        </h4>
+        <h6>
+          (sur <span id="numberOfMembers">...</span>)
+        </h6>
+      </div>
+      <div class="col-sm">
+        <h4>
+          <span id="numberOfTeams-lille">...</span> équipes
+        </h4>
+        <h6 class="mx-auto">
+          (sur <span id="numberOfTeams">...</span>)
+        </h6>
+      </div>
+    </div>
+    <hr/>
+
+    <div class="row text-center bg-dark">
+      <div class="col-sm">
+        Nos équipes:
+      </div>
+    </div>
+    <hr/>
+    <div id="line2" class="teams">
+    </div>
+    <hr/>
+
+    <div class="row text-center bg-dark">
+      <div class="col-sm mb-2">
+        <a class="text-light" href="https://www.lillemetropole.fr/challengevelo" target="_blank" rel="noopener noreferrer">En savoir plus sur le challenge vélo  (site de la MEL)</a>
+      </div>
+      <div class="col-sm">
+        <a class="text-light" href="https://challengevelo.lillemetropole.fr/" target="_blank" rel="noopener noreferrer">Accéder aux classements complets</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="widget.js"></script>
+  <script>
+    var urlParams = new URLSearchParams(window.location.search);
+    window.onload = init(urlParams.get("group"), true);
+  </script>
+
+</body>
+</html>

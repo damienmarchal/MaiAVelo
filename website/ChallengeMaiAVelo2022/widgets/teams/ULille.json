@@ -1,0 +1,30 @@
+{
+  "title": "L'Université de Lille à MaiAVélo 2022",
+  "blason": null,
+  "preview": "./previews/ulille-preview.png",
+  "background_style" : "background-color:#ac2773",
+  "teams": {
+    "Université de Lille" : "ulille",
+    "Université de Lille - CRIStAL" : "ulille-cristal",
+    "Université de Lille - GlycoBikers" : "ulille-glycobikers",
+    "Université de Lille - IUT" : "ulille-iut",
+    "Université de Lille - Faculté des Sciences et Technologies" : "ulille-fst",
+    "Université de Lille - PSITEC" : "ulille-psitec",
+    "Université de Lille - PsychoCycles (dpt de Psychologie)" : "ulille-psychocycles",
+    "Université de Lille - DGDNum" : "ulille-dgdnum",
+    "Université de Lille - Direction Communication" : "ulille-dircom",
+
+    "Université de Lille - ASPULille" : "ulille-aspulille",
+    "Université de Lille-ASEUL" : "ulille-aseul",
+    "Université de Lille - SUAPS" : "ulille-suaps",
+
+    "Université de Lille CLIL B5/6 Cit\u00e9 scientifique" : "ulille-aspulille",
+
+    "Lille Universit\u00e9 Club" : "ulille-uclub",
+
+    "Polytech Lille" : "ulille-oplytech",
+    "ENSAIT" : "ulille-ensait",
+    "ESJ Lille" : "ulille-esj"
+
+  }
+}

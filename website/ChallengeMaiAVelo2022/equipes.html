@@ -1,0 +1,150 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="author" content="Damien Marchal (copy-pasted code from Bootstrap">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+  </head>
+<body>
+
+<div id="chart">
+  <canvas id="myChart"></canvas>
+</div>
+
+<div class="table-responsive" style='margin-top:10px'>
+  <table id="table" class="table table-striped table-sm">
+    <thead id="table-thread">
+      <tr id="table-tr">
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha384-/LjQZzcpTzaYn7qWqRIWYC5l8FWEZ2bIHIz0D73Uzba4pShEcdLdZyZkI4Kv676E" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+
+<script type="text/javascript">
+var currentTable = undefined
+function getAlignement(columns)
+{
+    t = []
+    for(let i=1; i < columns.length;i++)
+    {
+        t.push(i)
+    }
+    return t;
+}
+
+function categoryToFrenchName(d)
+{
+  table = {
+    "CITY" : "Ville/Territoire",
+    "COMPANY":"Société/Employeur",
+    "ASSOCIATION":"Association/Autre",
+    "SCHOOL":"Enseignement"
+  }
+  return table[d]
+}
+
+function intervalToSize(d)
+{
+  table = {
+    "[150000, 300000)" : "150 000",
+    "[300000, None)" : "300 000",
+    "[300000, 100000000)" : "300 000",
+    "[70000, 299999)" : "70 000",
+    "[70000, 150000)" : "70 000",
+    "[30000, 69999)" : "30 000",
+    "[0, 29999)" : "<30 000",
+    "[250, None)" : "250",
+    "[250, 100000000)" : "250",
+    "[50, 250)"   : "50",
+    "[50, 249)"   : "50",
+    "[20, 49)"    : "20",
+    "[20, 50)"    : "20",
+    "[0, 19)"     : "<20",
+    "[0, 20)"     : "<20",
+    "[1, 49)"	    : "20",
+    "?"           : "?"
+  }
+  return table[d]
+}
+
+
+function reload(url)
+{
+  $.get(url,
+      function(content)
+      {
+          if(currentTable)
+            currentTable.destroy()
+
+          // Create the table from this content.
+          $('#table').empty();
+          $('#table').append("<thead id='table-thread'><tr id='table-tr'></tr></thead>")
+          columns = [
+              {"data":"name",
+               "name":"Équipe"
+              },
+              {"data":"progress",
+               "name":"Km"
+              },
+              {"data":"total_members",
+               "name":"Participants"
+              },
+              {"data":"invite",
+               "name":"Rejoindre",
+               "render":function(d){ return "<a href='https://geovelo.fr/fr/communities/invites/"+d+"'>"+d+"</a>" }
+              },
+              {"data":"url",
+               "name":"Contact",
+               "render":function(d){ return "<a href='"+d+"'>"+d+"</a>" }
+              },
+              {"data":"type",
+               "name":"Catégorie",
+               "render":categoryToFrenchName
+              },
+              {"data":"size_range",
+               "name":"Taille",
+               "render":intervalToSize
+              },
+              {"data":"is_local",
+               "name":"Local"
+              },
+             ]
+
+          for(column of columns)
+          {
+            $('#table-tr').append("<th>"+column.name+"</th>");
+          }
+
+          data = []
+          for(entry of content.data)
+          {
+            if(entry.type !== "CITY")
+            {
+              data.push(entry)
+            }
+          }
+          currentTable= $('#table').DataTable({
+           "pageLength": 300,
+           "order": [[ 1, "desc" ]],
+           "data": data,
+           "columns": columns,
+           //"columnDefs": [{
+          //   "targets": getAlignement(columns),
+          //   "className": 'dt-right'
+          // }]
+         });
+      });
+}
+
+reload("./database/data.json")
+</script>
+
+</body>
+</html>

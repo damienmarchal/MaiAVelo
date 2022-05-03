@@ -8,22 +8,27 @@
     "Université de Lille - CRIStAL" : "ulille-cristal",
     "Université de Lille - GlycoBikers" : "ulille-glycobikers",
     "Université de Lille - IUT" : "ulille-iut",
-    "Université de Lille - Faculté des Sciences et Technologies" : "ulille-fst",
+    "Université de Lille - Faculté des sciences et technologies" : "ulille-fst",
     "Université de Lille - PSITEC" : "ulille-psitec",
     "Université de Lille - PsychoCycles (dpt de Psychologie)" : "ulille-psychocycles",
     "Université de Lille - DGDNum" : "ulille-dgdnum",
+    "UNIVERSITE DE LILLE - DD&RS" : "ulille-ddrs",
     "Université de Lille - Direction Communication" : "ulille-dircom",
 
     "Université de Lille - ASPULille" : "ulille-aspulille",
-    "Université de Lille-ASEUL" : "ulille-aseul",
-    "Université de Lille - SUAPS" : "ulille-suaps",
+    "Université de lille-ASEUL" : "ulille-aseul",
+    "Université de Lille- SUAPS" : "ulille-suaps",
 
-    "Université de Lille CLIL B5/6 Cit\u00e9 scientifique" : "ulille-aspulille",
+    "CLIL - Univ Lille" : "ulille-clille",
 
     "Lille Universit\u00e9 Club" : "ulille-uclub",
 
+    "SCALab" : "ulille-scalab",
+    "PSYSEF" : "ulille-psysef",
+    "OncoCycle Lille" : "ulille-oncocycle",
+
     "Polytech Lille" : "ulille-oplytech",
-    "ENSAIT" : "ulille-ensait",
+    "ENSAIT à Vélo" : "ulille-ensait",
     "ESJ Lille" : "ulille-esj"
 
   }

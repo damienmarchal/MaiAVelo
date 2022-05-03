@@ -1,4 +1,4 @@
-const URL = "./teams/";
+const URL = "./widgets/teams/";
 
 /// change value of a numeric fields with an animation changing
 /// progressively the value from previous one to new one.
@@ -78,51 +78,43 @@ function load(teamsInGroup, withDetails)
     rows += "<div class='row'>"+columns+"</div>";
   document.querySelector('.teams').innerHTML = rows;
 
-  $.ajax({
-    url: "https://www.naviki.org/naviki/api/v5/Contest/2/findContest/51090",
-    dataType: "json",
-    cache : false,
-    success: function(json)
-    {
-      totalKm = json.totalKmInsideBoundary
-      setNewValue( $("#totalKm"), 0, totalKm, formatter)
-    }
-  });
+   // $.ajax({
+   //    url: "https://www.naviki.org/naviki/api/v5/Contest/2/findContest/51090",
+   //    dataType: "json",
+   //    cache : false,
+   //    success: function(json)
+   //    {
+   //      totalKm = json.totalKmInsideBoundary
+   //     setNewValue( $("#totalKm"), 0, totalKm, formatter)
+   //   }
+   // });
 
   $.ajax({
-    url: "https://www.naviki.org/naviki/api/v5/Contest/findTeams/51090/?offset=0&limit=500",
+    url: "./database/data.json",
     dataType: "json",
     cache : false,
     success: function(json)
     {
-      teams = {}
-      numberOfMembers = 0
-      for( i in json.teams )
+      teams = json.data
+      for( team of teams )
       {
-        teams[json.teams[i]["name"]] = json.teams[i]
-        numberOfMembers += parseInt(json.teams[i]["numberOfMembers"])
-      }
-      totalKmLille = 0.0
-      numberOfMembersLille = 0
-      for( name in teamsInGroup )
-      {
-        if( name in teams )
+        if( team.name in teamsInGroup )
         {
-          totalKmLille += parseFloat(teams[name]["totalKmInsideBoundary"])
-          numberOfMembersLille += parseInt(teams[name]["numberOfMembers"])
-          $("#"+teamsInGroup[name]).html( teams[name]["numberOfMembers"] + " inscrits, " + teams[name]["totalKmInsideBoundary"] + " Km" )
+          totalKmLille = team.progress
+          numberOfMembersLille = team.total_members
+          $("#"+teamsInGroup[team.name]).html( numberOfMembersLille + " inscrits, " + totalKmLille + " Km" )
         }
       }
       $("#spinner").addClass("d-none")
       $("#line1").removeClass("d-none")
 
-      setNewValue( $("#totalKm-lille"), 0, totalKmLille, formatter)
-      setNewValue( $("#numberOfMembers-lille"), 0, numberOfMembersLille, formatter)
+      //setNewValue( $("#totalKm-lille"), 0, totalKmLille, formatter)
+      //setNewValue( $("#numberOfMembers-lille"), 0, numberOfMembersLille, formatter)
       setNewValue( $("#numberOfTeams-lille"), 0, Object.keys(teamsInGroup).length, formatter)
 
-      setNewValue( $("#totalKm"), 0, totalKm, formatter)
-      setNewValue( $("#numberOfMembers"), 0, numberOfMembers, formatter)
-      setNewValue( $("#numberOfTeams"), 0, json.teams.length, formatter)
+      //setNewValue( $("#totalKm"), 0, totalKm, formatter)
+      //setNewValue( $("#numberOfMembers"), 0, numberOfMembers, formatter)
+      //setNewValue( $("#numberOfTeams"), 0, json.teams.length, formatter)
     } /// End of callback
   });
 }

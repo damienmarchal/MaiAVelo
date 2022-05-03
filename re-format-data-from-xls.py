@@ -4,6 +4,7 @@ import sys
 
 if len(sys.argv) != 3:
         print("USAGE: re-format-data-from-xls.py in_filename.xls out_filename.json" )
+        print("     : ", sys.argv) 
         print("       Remove private data from geovelo's provided file, and rename EPCI and toatal members column.")
         print("       The resulting content is saved into a json file.")
         sys.exit(-1)

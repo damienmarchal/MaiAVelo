@@ -16,7 +16,8 @@ in_filename=sys.argv[2]
 out_filename=sys.argv[3]
 
 dataframe = pandas.read_json(in_filename, orient="table")
-dataframe = dataframe[[fieldname, "total_members", "progress"]]
-datasum = dataframe.groupby(fieldname).sum()
+dataframe = dataframe[[fieldname, "type", "total_members", "progress"]]
+datasum = dataframe[dataframe["type"]=="CITY"].groupby(fieldname).sum()
+pprint.pprint(datasum)
 
 datasum.to_json(out_filename, indent=4, orient="table")

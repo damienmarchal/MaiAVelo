@@ -14,7 +14,7 @@ config_file="../config.json"        #< where the deployement private information
 public_src_db="crowdsourced-data"   #< where the crowdsourced data will be (the invite & url infos)
 
 # convert xls to json, drop private column and normalize column naming,
-python3 re-format-data-from-xls.py ${datasource_xls} ${out_db}/latest-data-step1.json
+python3 re-format-data-from-xls.py ${datasource_base} ${out_db}/latest-data-step1.json
 
 # add the invitation links into the existing file
 python3 add-invite-url.py ${out_db}/latest-data-step1.json ${public_src_db}/invitation-links.json ${out_db}/latest-data-step2.json

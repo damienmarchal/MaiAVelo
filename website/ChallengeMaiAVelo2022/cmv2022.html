@@ -1,0 +1,178 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="author" content="Damien Marchal (copy-pasted code from Bootstrap">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+  </head>
+<body>
+
+<div id="header" style="background-color: 00b7e7">
+<center>
+<img src="./images/cmv2021.jpeg"/>
+</center>
+</div>
+<hr/>
+<h6 style="background-color:FFFFFF">
+    <b>Avertissement:</b> Le classement officiel est diffusé par les organisateurs du challenge MaiAVélo à l'addresse:
+    <a href="https://challenge-maiavelo.geovelo.fr/classements/">https://challenge-maiavelo.geovelo.fr/classements/</a><br/>
+    Les tableaux ci-dessous sont générés à partir des données mises en ligne par les organisateurs.
+    Seuls les km réalisés sur la Métropole Européenne de Lille sont pris en compte sur ce graphique.
+    Les équipes "publiques" sont pas affichée sur le tableau en raison d'une différence de comptabilité entre GéoVélo
+    et Naviki.
+</h6>
+<hr/>
+
+
+<div id="canvas" style="background-color:FFFFFF">
+<canvas height="100" id="chart-cumulative-km"></canvas>
+</div>
+
+<div class="table-responsive" style='margin-top:10px' style="background-color:FFFFFF">
+  <table id="table" class="table table-striped" style="width:100% background-color:FFFFFF">
+    <thead id="table-thread">
+      <tr id="table-tr">
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha384-/LjQZzcpTzaYn7qWqRIWYC5l8FWEZ2bIHIz0D73Uzba4pShEcdLdZyZkI4Kv676E" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+
+
+<script type="text/javascript">
+var numberFormatter = new Intl.NumberFormat('fr-FR');
+
+var currentTable = undefined
+function getAlignement(columns)
+{
+    t = []
+    for(let i=1; i < columns.length;i++)
+    {
+        t.push(i)
+    }
+    return t;
+}
+
+function categoryToFrenchName(d)
+{
+  table = {
+    "CITY" : "Ville/Territoire",
+    "COMPANY":"Société/Employeur",
+    "ASSOCIATION":"Association/Autre",
+    "SCHOOL":"Enseignement"
+  }
+  return table[d]
+}
+
+function intervalToSize(d)
+{
+  table = {
+    "[150000, 300000)" : "150 000",
+    "[300000, None)" : "300 000",
+    "[300000, 100000000)" : "300 000",
+    "[70000, 299999)" : "70 000",
+    "[70000, 150000)" : "70 000",
+    "[30000, 69999)" : "30 000",
+    "[0, 29999)" : "<30 000",
+    "[250, None)" : "250",
+    "[250, 100000000)" : "250",
+    "[50, 250)"   : "50",
+    "[50, 249)"   : "50",
+    "[20, 49)"    : "20",
+    "[20, 50)"    : "20",
+    "[0, 19)"     : "<20",
+    "[0, 20)"     : "<20",
+    "[1, 49)"	    : "20",
+    "?"           : "?"
+  }
+  return table[d]
+}
+
+function reload(url)
+{
+  $.get(url,
+      function(content)
+      {
+          if(currentTable)
+            currentTable.destroy()
+
+          // Create the table from this content.
+          $('#table').empty();
+          $('#table').append("<thead id='table-thread'><tr id='table-tr'></tr></thead>")
+          columns = [
+              {"data":"name",
+               "name":"Équipe"
+              },
+              {"data":"progress",
+               "name":"Cumul (km)",
+               "render":function(d){ return numberFormatter.format(d) }
+              },
+              {"data":"total_members",
+               "name":"Participants",
+               "render":function(d){ return "> "+d }
+              },
+              {"data":"invite",
+               "name":"Rejoindre",
+               "render":function(d){ return "<a href='https://geovelo.fr/fr/communities/invites/"+d+"'>"+d+"</a>" }
+              },
+              {"data":"url",
+               "name":"Discuter",
+               "render":function(d){ return "<a href='"+d+"'>"+d+"</a>" }
+              },
+              {"data":"type",
+               "name":"Catégorie",
+               "render":categoryToFrenchName
+              },
+              {"data":"size_range",
+               "name":"Taille",
+               "render":intervalToSize
+              },
+              {"data":"is_local",
+               "name":"Local"
+              },
+             ]
+
+          for(column of columns)
+          {
+            $('#table-tr').append("<th>"+column.name+"</th>");
+          }
+
+          data = []
+          for(entry of content.data)
+          {
+            if(entry.type !== "CITY" &&
+               entry.epci==="M\u00e9tropole Europ\u00e9enne de Lille" &&
+               entry.is_local===true
+            )
+            {
+              data.push(entry)
+            }
+          }
+          currentTable= $('#table').DataTable({
+           "pageLength": 300,
+           "order": [[ 1, "desc" ]],
+           "data": data,
+           "columns": columns,
+           columnDefs: [{
+             targets: [1,2,3,4, 5, 6],
+             className: 'dt-right'
+           }]
+         });
+      });
+}
+
+reload("./database/data.json")
+</script>
+
+<script src="./plot.js"></script>
+
+</body>
+</html>

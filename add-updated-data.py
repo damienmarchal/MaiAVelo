@@ -32,7 +32,6 @@ for entry in data["data"]:
             k = k[:-3]
             k = int(k.replace(" ",""))
         if k > int(entry["progress"]):
-            print("REPLACE: ", name, k , entry["progress"])
             entry["progress"] = k
 
 for k,v in updated_data.items():

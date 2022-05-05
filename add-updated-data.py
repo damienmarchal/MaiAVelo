@@ -28,17 +28,20 @@ for entry in data["data"]:
     name = entry["name"]
     if name in updated_data:
         k = updated_data[name]["km"]
-        if k[-3:] == " km":
+        if isinstance(k, str) and k[-3:] == " km":
             k = k[:-3]
-        entry["progress"]=k.replace(" ","")
+            k = int(k.replace(" ",""))
+        if k > int(entry["progress"]):
+            print("REPLACE: ", name, k , entry["progress"])
+            entry["progress"] = k
 
 for k,v in updated_data.items():
     if k not in old_data_as_dict:
-        print("NEW TEAM: ", k, v)
+        #print("NEW TEAM: ", k, v)
         k = v["km"]
-        if k[-3:] == " km":
+        if isinstance(k, str) and k[-3:] == " km":
             k = k[:-3]
-        k = k.replace(" ","")
+            k = k.replace(" ","")
 
         data["data"].append({
             "department": "",

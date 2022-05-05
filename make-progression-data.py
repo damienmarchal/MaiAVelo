@@ -68,7 +68,7 @@ for entry in cmvdb:
     entry["date"] = datetime.datetime.strptime(entry["date"], "%Y-%m-%dT%H:%M:00")+incrdate
 
 outdata = []
-for i in range(0,5):
+for i in range(0,32):
     print("Processing ", date.strftime("%Y-%m-%dT%H:%M:00"))
 
     entry = findClosestEntry(date, db)
@@ -84,8 +84,11 @@ for i in range(0,5):
     }
 
     outdata.append(p)
-    date = date + datetime.timedelta(days=1)
+    if date >= datetime.datetime.now():
+        break
 
+    date = date + datetime.timedelta(days=1)
+        
 with open(out_filename,"w") as outfile:
     outfile.write(json.dumps(
         {"data" : outdata},

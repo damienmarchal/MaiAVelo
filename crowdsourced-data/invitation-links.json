@@ -118,5 +118,17 @@
     "name": "Au CHU de Lille à vélo",
     "invite": "GNOQGR", 
     "url" : "https://www.facebook.com/groups/auchudelilleavelo"
+},
+{
+    "name": "Pôle emploi",
+    "invite": "FTOLJS", 
+    "url" : ""
+},
+{
+    "name": "PORTS DE LILLE",
+    "invite": "FTOLJS", 
+    "url" : ""
 }
+
+
 ]

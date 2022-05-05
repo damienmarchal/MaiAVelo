@@ -40,6 +40,8 @@ cp ${out_db}/latest-stats-city.json ${out_website}/ChallengeMaiAVelo2022/databas
 cp ${out_db}/latest-stats-epci.json ${out_website}/ChallengeMaiAVelo2022/database/stats-epci.json
 cp ${out_db}/latest-stats-department.json ${out_website}/ChallengeMaiAVelo2022/database/stats-department.json
 cp ${out_db}/latest-stats-region.json ${out_website}/ChallengeMaiAVelo2022/database/stats-region.json
+cp ${out_db}/dashboard.json ${out_website}/ChallengeMaiAVelo2022/database/dashboard.json
+
 
 # when ready ... publish now
 # python3 publish-website.py ${config_file} ${out_website}

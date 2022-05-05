@@ -5,13 +5,63 @@
     "url" : "https://www.facebook.com/groups/ulillechallengevelo" 
 },
 {
+    "name": "Université de Lille - Faculté des sciences et technologies",
+    "invite": "HMHHBF", 
+    "url" : "https://www.facebook.com/groups/ulillechallengevelo"     
+},
+{
+    "name": "PSYSEF",
+    "invite": "MYQPLX", 
+    "url" : "https://www.facebook.com/groups/ulillechallengevelo"     
+},
+{
     "name": "Universit\u00e9 de Lille - IUT",
     "invite": "HCHGPD", 
     "url" : "https://www.facebook.com/groups/ulillechallengevelo" 
 },
 {
+    "name": "Polytech Lille",
+    "invite": "HRZIAW", 
+    "url" : "https://www.facebook.com/groups/ulillechallengevelo" 
+},
+{
+    "name": "CLIL - Univ Lille",
+    "invite": "MUGPSA", 
+    "url" : "https://www.facebook.com/groups/ulillechallengevelo" 
+},
+{
     "name": "Universit\u00e9 de Lille - PsychoCycles (dpt de Psychologie)",
     "invite": "HPGDZK", 
+    "url" : "https://www.facebook.com/groups/ulillechallengevelo" 
+},
+{
+    "name": "Universit\u00e9 de Lille - CRIStAL",
+    "invite": "FRHXEE", 
+    "url" : "https://www.facebook.com/groups/ulillechallengevelo" 
+},
+{
+    "name": "Universit\u00e9 de Lille - GlycoBikers",
+    "invite": "GSQGKH", 
+    "url" : "https://www.facebook.com/groups/ulillechallengevelo" 
+},
+{
+    "name": "Universit\u00e9 de Lille - PSITEC",
+    "invite": "HPDLWC", 
+    "url" : "https://www.facebook.com/groups/ulillechallengevelo" 
+},
+{
+    "name": "TVES ULR 4477",
+    "invite": "MMHAOM", 
+    "url" : "https://www.facebook.com/groups/ulillechallengevelo" 
+},
+{
+    "name": "OncoCycle Lille",
+    "invite": "MCXTRX", 
+    "url" : "https://www.facebook.com/groups/ulillechallengevelo" 
+},
+{
+    "name": "SCAlab",
+    "invite": "JDNQVD", 
     "url" : "https://www.facebook.com/groups/ulillechallengevelo" 
 },
 {
@@ -25,6 +75,11 @@
     "url" : "https://www.facebook.com/groups/ulillechallengevelo"
 },
 {
+    "name": "Université de Lille - Direction de la Communication",
+    "invite": "MDNOMO", 
+    "url" : "https://www.facebook.com/groups/ulillechallengevelo"
+},
+{
     "name": "INRIA AGOS",
     "invite": "IJPMKX", 
     "url" : "https://twitter.com/AgosLille"
@@ -32,13 +87,36 @@
 {
     "name": "Roule pour Santes",
     "invite": "FJKZWR", 
+    "url" : "https://www.facebook.com/groups/261827951897934/" 
+},
+{
+    "name": "CNRS HdF on the bike !",
+    "invite": "GSLZRW", 
+    "url" : "" 
+},
+{
+    "name": "Centrale Lille",
+    "invite": "KRGBIW", 
     "url" : "" 
 },
 {
     "name": "Haubourdin",
     "invite": "GKTZMW", 
     "url" : ""
+},
+{
+    "name": "P\u00e9v\u00e8le Carembault \u00e0 v\u00e9lo",
+    "invite": "MMPYGX", 
+    "url" : "https://www.facebook.com/groups/444899069549049"
+},
+{
+    "name": "Cyclistes à Lille",
+    "invite": "JXXJUU", 
+    "url" : "https://www.facebook.com/groups/cyclistesalille/"
+},
+{
+    "name": "Au CHU de Lille à vélo",
+    "invite": "GNOQGR", 
+    "url" : "https://www.facebook.com/groups/auchudelilleavelo"
 }
-
-
 ]
